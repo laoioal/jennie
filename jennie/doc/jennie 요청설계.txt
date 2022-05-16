@@ -1,0 +1,107 @@
+# Whistle Project 요청 설계
+
+--------------------------------------------------------------
+# 메인페이지 보기 요청 
+요청내용	: 	/whistle/main.blp
+파라미터	:	무
+컨트롤러	: 	com.githrd.whistle.controller.MainForm
+뷰			:	/WEB-INF/views/whistle/main.jsp
+--------------------------------------------------------------
+
+
+# 회원관련 요청
+--------------------------------------------------------------
+# 로그인 폼보기 요청 
+요청내용	: 	/whistle/member/login.blp
+파라미터	:	무
+컨트롤러	: 	com.githrd.whistle.controller.member.LoginForm
+뷰			:	/WEB-INF/views/whistle/member/login.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /whistle/main.blp
+--------------------------------------------------------------
+# 로그인 처리 요청 
+요청내용	: 	/whistle/member/loginProc.blp
+파라미터	:	id, pw
+컨트롤러	: 	com.githrd.whistle.controller.member.LoginProc
+뷰			:	
+			 	redirect ]
+					성공 : /whistle/main.blp
+					실패 : /whistle/member/login.blp
+--------------------------------------------------------------
+# 로그아웃 처리 요청 
+요청내용	: 	/whistle/member/logout.blp
+파라미터	:	x
+컨트롤러	: 	com.githrd.whistle.controller.member.Logout
+뷰			:	
+			 	redirect ]
+					성공 : /whistle/main.blp
+--------------------------------------------------------------
+# 회원가입 폼보기 요청 
+요청내용	: 	/whistle/member/join.blp
+파라미터	:	무
+컨트롤러	: 	com.githrd.whistle.controller.member.JoinForm
+뷰			:	/WEB-INF/views/whistle/member/join.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /whistle/main.blp
+--------------------------------------------------------------
+# 아이디체크 처리 요청 
+요청내용	: 	/whistle/member/idCheck.blp
+파라미터	:	id
+컨트롤러	: 	com.githrd.whistle.controller.member.IdCheck
+뷰			:	json
+--------------------------------------------------------------
+# 회원가입 처리 요청 
+요청내용	: 	/whistle/member/joinProc.blp
+파라미터	:	name, id, pw, mail, tel, ano, gen
+컨트롤러	: 	com.githrd.whistle.controller.member.JoinProc
+뷰			:	
+		 		redirect ]
+					성공 : /whistle/main.blp
+					실패 : /whistle/member/join.blp
+--------------------------------------------------------------
+
+
+--------------------------------------------------------------
+# 내정보 폼보기 요청 
+요청내용	: 	/whistle/member/myInfo.blp
+파라미터	:	x
+컨트롤러	: 	com.githrd.whistle.controller.member.MyInfo
+뷰			:	/WEB-INF/views/whistle/member/myInfo.jsp
+
+--------------------------------------------------------------
+# 회원목록 폼보기 요청 
+요청내용	: 	/whistle/member/memberList.blp
+파라미터	:	무
+컨트롤러	: 	com.githrd.whistle.controller.member.MemberList
+뷰			:	/WEB-INF/views/whistle/member/memberList.jsp
+--------------------------------------------------------------
+# 회원정보 폼보기 요청 
+요청내용	: 	/whistle/member/memberInfo.blp
+파라미터	:	mno
+컨트롤러	: 	com.githrd.whistle.controller.member.MemberInfo
+뷰			:	/WEB-INF/views/whistle/member/memberInfo.jsp
+--------------------------------------------------------------
+# 회원탈퇴 처리요청 
+요청내용	: 	/whistle/member/delInfo.blp
+파라미터	:	mno, id(신원 확인용)
+컨트롤러	: 	com.githrd.whistle.controller.member.DelInfo
+뷰			:	
+				redirect ]
+					성공 : /whistle/
+					실패 : /whistle/member/memberInfo.blp
+
+--------------------------------------------------------------
+# 내정보 수정 폼보기 요청 
+요청내용	: 	/whistle/member/editInfo.blp
+파라미터	:	x
+컨트롤러	: 	com.githrd.whistle.controller.member.EditInfo
+뷰			:	/WEB-INF/views/whistle/member/editInfo.jsp
+--------------------------------------------------------------
+# 회원탈퇴 처리요청 
+요청내용	: 	/whistle/member/editProc.blp
+파라미터	:	mno, pw, mail, tel, ano
+컨트롤러	: 	com.githrd.whistle.controller.member.EditProc
+뷰			:	
+				redirect ]
+					성공 : /whistle/member/myInfo.blp
+					실패 : /whistle/member/editInfo.blp

@@ -1,0 +1,80 @@
+.center {
+	text-align: center;
+}
+.inline {
+	width: 500px;
+	display: inline-block;
+}
+.header {
+	width: 500px;
+	font-size: 30pt;
+	font-weight: bold;
+	border: 1px solid gray;
+	font-style: italic;
+	box-shadow: 1px 1px 1px 1px gray;
+	
+}
+.body {
+	width: 500px;
+	border: 1px solid gray;
+	margin-top: 20px;
+	text-align: left;
+	box-shadow: 1px 1px 1px 1px gray;
+}
+.input {
+		width:300px;
+		display: inline-block;
+		margin: 5px;
+		
+}
+input {
+	background-color: Snow;
+	text-align: center;
+	width: 340px;
+	height: 50px;
+	font-size: 13pt;
+	margin: 3px 0px 3px 0px;
+}
+input:hover {
+	background-color: white;
+}
+.log {
+	display: inline-block;
+	float: right;
+	position: relative;
+	top: 9px;
+	right: 15px;
+	
+	
+}
+.logbut {
+	display:block;
+	width: 120px;
+	height: 115px;
+	font-size: 15pt;
+	font-weight: bold;
+	margin: 0px;
+	background-color: FloralWhite;
+	border: 0.1px solid gray;
+}
+.logbut:hover {
+	
+}
+
+.button {
+	margin-top: 4px;
+}
+button {
+	background-color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.but1, .but2, .but3 {
+	display: inline-block;
+	width: 33.33%;
+	float: left;
+}
+:link {
+	text-decoration: none;
+}

@@ -1,0 +1,101 @@
+.center {
+	text-align: center;
+}
+
+.sub {
+	display: inline-block;
+	width: 700px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px 1px gray;
+}
+
+.header {
+	display: inline-block;
+	width: 600px;
+	font-size: 20pt;
+	margin-top: 13px;
+	background-color: AliceBlue;
+}
+
+.main {
+	display: inline-block;
+	width: 600px;
+	margin: 20px 0px 5px 0px;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 1px 1px gray;
+	text-align: left;
+	padding-bottom: 15px;
+}
+.main-avt {
+	display: inline-block;
+	text-align: left;
+	float: left;
+}
+
+.avatar {
+	display: inline-block;
+	width: 200px;
+	height: 230px;
+	border: 1px solid black;
+	margin: 20px 0px 20px 20px;
+	overflow: hidden;
+/* 	background: url('/black/resources/img/avatar/img_avatar1.png');
+	background-size: 200px auto; */
+}
+	.avatar > img {
+	overflow: hidden;
+	width: 200px;
+	height: 230px;
+}
+.main-mem {
+	display: inline-block;
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.mem {
+	display: block;
+	width: 340px;
+	font-size: 3pt;
+}
+.button {
+	display: inline-block;
+	width: 600px;
+	margin: 5px 0px 10px 0px;
+}
+button {
+	width: 33.33%;
+	height: 30px;
+	cursor: pointer;
+	float: left;
+	background-color: AliceBlue;
+	border: 0.1px solid gray;
+}
+.font {
+	font-size: 13pt;
+}
+
+.mainheader {
+	display: inline-block;
+	width: 700px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px 1px gray;
+	margin-bottom: 20px;
+	font-size: 30pt;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.frd {
+	display: inline-block!important;
+}
+
+.lmargin{
+	margin-left : 5px;
+}
+input {
+	width: 230px;
+	border: 0px;
+	font-size: 12pt
+	
+}

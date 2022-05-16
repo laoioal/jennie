@@ -1,0 +1,94 @@
+.center {
+	text-align: center;
+}
+.main {
+	display: inline-block;
+	width: 700px;
+}
+
+.mainheader {
+	display: inline-block;
+	width: 700px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px 1px gray;
+	margin-bottom: 20px;
+	font-size: 30pt;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.body {
+	display: inline-block;
+	width: 700px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px 1px gray;
+}
+.bodyheader {
+	display: inline-block;
+	width: 600px;
+	font-size: 20pt;
+	margin-top: 13px;
+	background-color: AliceBlue;
+}
+.bodymain {
+	display: inline-block;
+	width: 600px;
+	margin: 20px 0px 5px 0px;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 1px 1px gray;
+	text-align: left;
+}
+form {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 1pt;
+	margin-bottom: 15x;
+}
+input {
+	width: 400px;
+}
+.laberdiv {
+	text-align: right;
+	display: inline-block;
+	width: 90px;
+	position: relative;
+	left: -58px;
+	font-size: 12pt;
+}
+.inputdiv {
+	display: inline-block;
+	width: 400px;
+	position: relative;
+	left: -55px;
+}
+#mailbut {
+	width: 75px;
+	position: relative;
+	left: -40px;
+	height: 21px;
+	top: 2px;
+	padding: 0px;
+}
+.mailcon {
+	position: relative;
+	left: 40px;
+}
+select {
+	width: 408px;
+}
+form > hr:nth-child(3) {
+	font-size: 2pt;	
+}
+.but > button {
+	width: 140px;
+	height: 20px;
+	margin: 2px 0px 2px 0px;
+	border: 0px;
+	background-color: white;
+	cursor: pointer;
+	border: 0.5px solid gray;
+}
+#reset {
+	position: relative;
+	top: -3px;
+}

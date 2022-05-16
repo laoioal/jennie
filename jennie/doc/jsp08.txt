@@ -1,0 +1,32 @@
+# jsp08
+
+-----------------------------------------------------------------------
+이클립스에서
+	Dynamic Web Project를
+	jennie 이름으로 만들고
+	whistle에 있는 main.jsp 파일을 복사해서(index.jsp 도 복사)
+	localhost/jennie/ 로 요청하면
+	/jennie/main.blp 가 보여지도록
+	프로젝트를 만드세요
+	
+	java 패키지경로
+	com.githrd.jennie.xxxx
+	
+	***
+	프로젝트 루트 경로 : /whistle
+	==> 서버 설정에서 바꿔야한다.
+-----------------------------------------------------------------------
+
+	Dynamic Web Project를 blpink 라는 이름으로 만들고
+	여청 매핑은 *.black 으로 요청하는 모든 요청을 분석해서 실행시킬
+	디스패이 Servlet BlDispatch를 제작해서
+	
+	http://localhost/blpink/ 로 요청하면
+	/webapp/WEP-INF/views/main.jsp 를 보여주도록 프로젝트를 세팅하세요
+	
+	추가 ]
+		데이터베이스 세팅하는 파일(context.xml)은 복사해서 붙여넣어주세요
+
+
+참고 ]
+	이 프로젝트는 수업시간 이후에 연습할 용도의 포젝트이다.
