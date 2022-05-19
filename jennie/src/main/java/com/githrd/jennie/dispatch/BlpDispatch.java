@@ -12,7 +12,7 @@ import com.githrd.jennie.controller.*;
 /**
  * 	이 클래스는 .blp라는 확장자로 요청이 된 경우 
  * 	요청 내용을 분석하고 실행할 클래스를 선택해서 실행(디스패치)시켜줄 서블릿클래스이다.
- * @author	전은석
+ * @author	이용현
  * @since	2022/05/11
  * @version	v.1.0
  * @see
@@ -21,8 +21,7 @@ import com.githrd.jennie.controller.*;
  * 
  * 			작업이력 ]
  * 				2022.05.11	-	클래스제작
- * 								담당자 : 전은석
- *
+ * 								담당자 : 이용현
  */
 
 

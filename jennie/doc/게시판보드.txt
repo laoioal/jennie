@@ -1,0 +1,171 @@
+방명록 페이지에서 필요한 데이터
+
+	글번호, 작성자, 아이디, 본문, 작성일, 아바타저장이름
+	
+	방명록테이블 : 글번호, 본문, 작성일
+	회원테이블 : 작성자 아이디
+	아바타테이블 : 저장이름
+	
+	따라서 3개의 테이블을 조인해야 하고
+	최종적으로는 rownum을 기준으로 일부 데이터만 가져와야 하므로
+	조건절에 rownum을 비교하는 구문이 포함되어야 한다.
+	
+	정렬 방식은 작성일 기준 내림차순
+	
+SELECT
+	gno, id, body, wdate, savename
+FROM
+	member m, guestboard g, avatar a
+WHERE
+	g.isshow = 'Y'
+	AND mno = writer
+	AND avt = ano
+ORDER BY
+	wdate DESC
+;
+
+
+==> rounum을 붙여준다.
+SELECT
+	ROWNUM rno, gno, id, body, wdate, savename
+FROM
+	(
+	SELECT
+		gno, id, body, wdate, savename
+	FROM
+		member m, guestboard g, avatar a
+	WHERE
+		g.isshow = 'Y'
+		AND mno = writer
+		AND avt = ano
+	ORDER BY
+		wdate DESC
+	)
+;
+
+==> ROWNUM을 스칼라데이터로 만들고
+SELECT
+	rno, gno, id, body, wdate, savename
+FROM
+	(
+		SELECT
+			ROWNUM rno, gno, id, body, wdate, savename
+		FROM
+			(
+			SELECT
+				gno, id, body, wdate, savename
+			FROM
+				member m, guestboard g, avatar a
+			WHERE
+				g.isshow = 'Y'
+				AND mno = writer
+				AND avt = ano
+			ORDER BY
+				wdate DESC
+			)
+	)
+WHERE
+	rno BETWEEN 4 AND 6
+;
+
+
+
+-------------------------------------------------------------------------------
+내가 작성한 방명록 글 카운트 조회 결과가 1이면 작성/ 0이면 미작성
+SELECT
+	COUNT(*) cnt
+FROM
+	guestboard
+WHERE
+	writer = 1010
+;
+
+
+
+
+---------------------------------------------
+#################################댓글게시판
+SELECT
+    rno, rbno, upno, mno, id, body, savename, wdate, step
+FROM(
+        SELECT
+            rownum rno, rbno, upno, mno, id, body, savename, wdate, step
+        FROM(
+                SELECT
+                    rbno, upno, mno, id, body, savename, wdate, (level -1) step
+                FROM
+                    reboard r, member m, avatar a
+                WHERE
+                    r.isshow = 'Y'
+                    AND rbmno = mno
+                    AND avt = ano
+                START WITH
+                    upno IS NULL
+                CONNECT BY
+                    PRIOR rbno = upno
+                ORDER SIBLINGS BY
+                    wdate DESC
+             )
+    )
+WHERE
+    rno BETWEEN 1 AND 3
+    
+
+
+    
+    
+SELECT
+	rbno, upno, rbmno, wdate, level, (level - 1) step
+FROM
+	reboard
+START WITH
+	upno IS NULL
+CONNECT BY
+	PRIOR rbno = upno	
+ORDER SIBLINGS BY
+	wdate DESC
+;
+
+/*
+START WITH 가 있어야 level을 뽑아올 수 있다.
+*/
+
+
+
+
+---------------------------
+댓글 작성테이블 작성자 정보
+SELECT
+	mno, savename
+FROM
+	member m, avatar a
+WHERE
+	m.isshow = 'Y'
+	AND avt = ano
+	AND id = 'jennie';
+
+
+댓글 등록
+INSERT INTO
+	reboard(rbno, upno, rbmno, body)
+VALUES(
+	(SELECT NVL(MAX(rbno) + 1, 100001) FROM reboard),
+	?, ?, ?
+)
+
+
+댓글에 댓글쓰기전 정보 가져오기
+SELECT
+	rbno, body, id, savename
+FROM
+	reboard r, member m, avatar a
+WHERE
+	r.isshow = 'Y'
+	AND rbno = ?
+	AND avt = ano
+	AND id = ?
+	
+	
+
+-----------------------------
+	

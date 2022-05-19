@@ -105,3 +105,69 @@
 				redirect ]
 					성공 : /whistle/member/myInfo.blp
 					실패 : /whistle/member/editInfo.blp
+					
+					
+					
+======================================================
+################ 방명록 요청 설계 ####################
+======================================================
+
+# 방명록 리스트 품보기 요청
+요청내용	: 	/whistle/guestBoard/gBoardList.blp
+파라미터	:	[nowPage]
+컨트롤러	: 	com.githrd.jennie.controller.guestBoard.GuestBoard
+뷰			:	/WEB-INF/views/guestBoard/gBoardList.jsp
+--------------------------------------------------------------
+# 방명록 글쓰기 품보기 요청
+요청내용	: 	/whistle/guestBoard/gBoardWrite.blp
+파라미터	:	nowPage
+컨트롤러	: 	com.githrd.jennie.controller.guestBoard.GBoardWrite
+뷰			:	/WEB-INF/views/guestBoard/gBoardWrite.jsp
+--------------------------------------------------------------
+# 방명록 글쓰기 처리 요청
+요청내용	: 	/whistle/guestBoard/gBoardWriteProc.blp
+파라미터	:	body, nowPage
+컨트롤러	: 	com.githrd.jennie.controller.guestBoard.GBoardWriteProc
+뷰			:	redirect]
+					성공 : /whistle/guestBoardList.blp
+					실패 : /whistle/guestBoard/gBoardWrite.blp?nowPage=?
+--------------------------------------------------------------
+# 방명록 글쓰기 처리 요청 json
+요청내용	: 	/whistle/guestBoard/gBoardWriteJsonProc.blp
+파라미터	:	body, nowPage
+컨트롤러	: 	com.githrd.jennie.controller.guestBoard.GBoardWriteJsonProc
+뷰			:	redirect]
+					성공 : /whistle/guestBoardList.blp
+					실패 : /whistle/guestBoard/gBoardWrite.blp?nowPage=?
+					
+======================================================
+################ 댓글게시판 요청 설계 ####################
+======================================================
+
+# 댓글게시판 리스트 품보기 요청
+요청내용	: 	/whistle/reboard/reboardList.blp
+파라미터	:	[nowPage]
+컨트롤러	: 	com.githrd.jennie.controller.reboard.ReboardList
+뷰			:	/WEB-INF/views/reboard/reboardList.jsp
+--------------------------------------------------------------
+# 댓글게시판 글쓰기 품보기 요청
+요청내용	: 	/whistle/reboard/reboardWrite.blp
+파라미터	:	nowPage
+컨트롤러	: 	com.githrd.jennie.controller.reboard.ReboardWrite
+뷰			:	/WEB-INF/views/reboard/reboardWrite.jsp
+--------------------------------------------------------------
+# 댓글게시판 글등록 처리 요청
+요청내용	: 	/whistle/reboard/reboardWriteProc.blp
+파라미터	:	nowPage, mno, body
+컨트롤러	: 	com.githrd.jennie.controller.reboard.ReboardWriteProc
+뷰			:	redirect]
+					성공 : /whistle/reboard/reboardList.blp
+					실패 : ==> forward] redirect.jsp
+								/whistle/reboard/reboardWrite.blp
+--------------------------------------------------------------
+# 댓글게시판 댓글쓰기 요청
+요청내용	: 	/whistle/reboard/reboardComment.blp
+파라미터	:	nowPage
+컨트롤러	: 	com.githrd.jennie.controller.reboard.ReboardComment
+뷰			:	/WEB-INF/views/reboard/reboardComment.jsp
+--------------------------------------------------------------
