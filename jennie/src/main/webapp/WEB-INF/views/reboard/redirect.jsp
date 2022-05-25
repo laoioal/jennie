@@ -19,6 +19,12 @@
 <c:if test="${not empty NOWPAGE}">
 		<input type="hidden" name="nowPage" value="${NOWPAGE}">
 </c:if>
+<c:if test="${not empty MSG}">
+		<input type="hidden" name="msg" value="${MSG}">
+</c:if>
+<c:if test="${not empty param.bno}">
+		<input type="hidden" name="bno" value="${param.bno}">
+</c:if>
 	</form>
 
 </c:if>

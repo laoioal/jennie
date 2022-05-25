@@ -54,6 +54,27 @@ $(document).ready(function(){
 			$(location).attr('href', addr);
 		});
 		
+		/* 댓글등록 버튼 클릭 이벤트) */
+		$('#cmtbtn').click(function(){
+			var btxt = $('#body').val();
+			btxt = btxt.trim();
+			
+			if(!btxt) {
+				$('#body').focus();
+				return;
+			}
+			
+			if(btxt.length > 200) {
+				btxt = btxt.substring(0, 200);
+				$('#body').val(btxt);
+				alert('코멘트의 글자수는 200자를 초과할 수 없습니다.');
+				return;
+			}
+			
+			$('#frm').submit();
+			
+		});
+		
 		$('.w3-button.w70').click(function(){
 			// 어떤 버튼이 클릭이 되었는지 알아내고
 			var btxt = $(this).html();
@@ -61,14 +82,15 @@ $(document).ready(function(){
 			// 글번호 읽어오기
 			var sno = $(this).parent().attr('id');
 			
-			if(btxt == '댓글') {
-				$('#bno').val(sno);
-				
+			$('#bno').val(sno);
+			if(btxt == '댓글') {	
 				$('#frm').attr('action', '/whistle/reboard/reboardComment.blp');
-				
-				$('#frm').submit();
+			} else if(btxt == '삭제') {
+				$('#frm').attr('action', '/whistle/reboard/reboardDel.blp');
+			} else if(btxt == '수정') {
+				$('#frm').attr('action', '/whistle/reboard/reboardEdit.blp');
 			}
-			
+				$('#frm').submit();
 		});
 		
 		
@@ -104,5 +126,25 @@ $(document).ready(function(){
 			$('#frm').submit();
 		})
 		
+		$('#editbtn').click(function(){
+			
+			
+			var btxt = $('#body').val();
+			btxt = btxt.trim(); 
+			if($('#obody').val() == btxt){
+				alert('수정 사항이 없습니다.');
+				$('#body').focus();
+				return;
+			}
+			if(btxt.length > 200) {
+				btxt = btxt.substring(0, 200);
+				$('#body').val(btxt);
+				alert('코멘트의 글자수는 200자를 초과할 수 없습니다.');
+				return;				
+			}
+			$('#frm').submit();
+			
+		});
+	
 		
 });

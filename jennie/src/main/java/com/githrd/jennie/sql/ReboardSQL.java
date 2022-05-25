@@ -10,6 +10,9 @@ public class ReboardSQL {
 	public final int SEL_WRITER_INFO 	= 1003;
 	public final int SEL_REBOARD_INFO 	= 1004;
 	
+	public final int DEL_REBOARD 	= 2001;
+	public final int UPDATE_REBOARD 	= 2002;
+	
 	public final int INSERT_REBOARD 	= 3001;
 	
 	public String getSQL(int code) {
@@ -51,7 +54,7 @@ public class ReboardSQL {
 			break;
 		case SEL_REBOARD_INFO :
 			buff.append("SELECT ");
-			buff.append("	rbno, body, mno, id, savename ");
+			buff.append("	rbno, body, wdate, mno, id, savename ");
 			buff.append("FROM ");
 			buff.append("	reboard r, member m, avatar a ");
 			buff.append("WHERE ");
@@ -77,6 +80,22 @@ public class ReboardSQL {
 			buff.append("	(SELECT NVL(MAX(rbno) + 1, 100001) FROM reboard), ");
 			buff.append("	?, ?, ? ");
 			buff.append(") ");
+			break;
+		case DEL_REBOARD :
+			buff.append("UPDATE ");
+			buff.append("	reboard ");
+			buff.append("SET ");
+			buff.append("	isshow = 'N' ");
+			buff.append("WHERE ");
+			buff.append("	rbno = ? ");
+			break;
+		case UPDATE_REBOARD :
+			buff.append("UPDATE ");
+			buff.append("	reboard ");
+			buff.append("SET ");
+			buff.append("	body = ? ");
+			buff.append("WHERE ");
+			buff.append("	rbno = ? ");
 			break;
 		}
 		

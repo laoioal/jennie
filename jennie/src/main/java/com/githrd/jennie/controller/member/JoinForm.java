@@ -21,7 +21,7 @@ public class JoinForm implements BlpInter {
 		HttpSession session = req.getSession();
 		if(session.getAttribute("SID") != null) {
 			// 로그인 한 경우
-			// 리다이렉트 셋팅
+			// 리다이렉트 세팅
 			req.setAttribute("isRedirect", true);
 			// 요청주소 반환하고
 			return "/whistle/main.blp";

@@ -7,7 +7,7 @@ $(document).ready(function(){
 		// 보낼 데이터 읽고
 		var sno = $('#mno').html();
 		var sid = $('#id').html();
-		// 보낼 데이터 셋팅하고
+		// 보낼 데이터 세팅하고
 		$('#smno').val(sno);
 		$('#sid').val(sid);
 		// 보낼주소 수정하고

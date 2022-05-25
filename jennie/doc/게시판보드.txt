@@ -168,4 +168,110 @@ WHERE
 	
 
 -----------------------------
+
+댓글에 작성한 댓글 삭제 기능
+UPDATE
+	reboard
+SET
+	isshow = 'N'
+WHERE
+	rbno = 100005
+;
+
+---------------------------------------
+게시글 등록 처리
+
+게시글 등록ㄷ은 두가지 작업이 이루어 져야한다.
+	1. 게시글 정보 등록
+	2. 점부파일 정보 등록
+이 같이 처리되어야 한다.
+
+이때
+어떤 정보부터 입력이 되어야 하는것이 문제인다.
+
+우리의 경우는 게시글 번호를 첨부파일에서 참조하있으므로
+게시글이 먼저 등록이 되어야 한다.
+
+INSERT INTO
+	board(bno, bmno, title, body)
+VALUES(
+	(SELECT NVL(MAX(bno) + 1, 100001) FROM board),
+	(SELECT mno FROM member WHERE id = ?),
+	?, ?
+)
+
+INSERT INTO
+	fileinfo(fno, fbno, oriname, savename, dir, len)
+VALUES(
+	(SELECT NVL(MAX(fno) + 1, 10000001) FROM fileinfo),
+	(
+		SELECT
+			MAX(bno)
+		FROM
+			board
+		WHERE
+			bmno = (
+						SELECT
+							mno
+						FROM
+							member
+						WHERE
+							id = ?
+					)),
+	 ?, ?, ?, ?
+)
+
+SELECT
+	bno, title, nvl(cnt, 0)
+FROM
+	board b, 
+	(
+	SELECT
+		fbno, count(*) cnt
+	FROM
+		fileinfo
+	WHERE
+		isshow = 'Y'
+	group by
+		fbno
+	)
+WHERE
+	isshow = 'Y'
+	AND bno = fbno(+)
+	AND bno = 100004
 	
+-----------------------------------------	
+SELECT
+	 bno, id, title, wdate, click, cnt
+FROM
+	(
+	SELECT
+		ROWNUM rno, bno, id, title, wdate, click, cnt
+	FROM 
+		(
+		SELECT
+			bno, id, title, wdate, click, NVL(cnt, 0) cnt
+		FROM
+			board b, member m,
+			(
+				SELECT
+					fbno, count(*) cnt
+				FROM
+					fileinfo
+				WHERE
+					isshow = 'Y'
+				group by
+					fbno
+			)
+		WHERE
+			bmno = mno
+			AND bno = fbno(+)
+			AND b.isshow = 'Y'
+			AND m.isshow = 'Y'
+		ORDER BY
+			wdate DESC
+		)
+	)
+WHERE
+	rno BETWEEN 1 AND 3
+;
