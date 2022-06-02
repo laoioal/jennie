@@ -1,16 +1,16 @@
 package com.githrd.jennie.controller.board;
 
+import java.util.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.githrd.jennie.controller.BlpInter;
-import com.githrd.jennie.dao.BoardDao;
-import com.githrd.jennie.util.PageUtil;
-import com.githrd.jennie.vo.BoardVO;
+import com.githrd.jennie.dao.*;
+import com.githrd.jennie.vo.*;
+import com.githrd.jennie.util.*;
 
 public class BoardList implements BlpInter {
 
@@ -33,6 +33,7 @@ public class BoardList implements BlpInter {
 		
 		req.setAttribute("LIST", list);
 		req.setAttribute("PAGE", page);
+		
 		return view;
 	}
 

@@ -3,6 +3,7 @@ package com.githrd.jennie.sql;
 public class BoardSQL {
 	public final int SEL_BOARD_LIST			=	1001;
 	public final int SEL_TOTAL_COUNT		=	1002;
+	public final int SEL_BOARD_DETAIL		=	1003;
 	
 	public final int INSERT_BOARD			= 	3001;
 	public final int INSERT_FILEINFO		= 	3002;
@@ -70,6 +71,17 @@ public class BoardSQL {
 			buff.append("    ) ");
 			buff.append("WHERE ");
 			buff.append("    rno BETWEEN ? AND ? ");
+			break;
+		case SEL_BOARD_DETAIL:
+			buff.append("SELECT ");
+			buff.append("    bno, id, title, body, wdate, click, fno, oriname, savename, dir ");
+			buff.append("FROM ");
+			buff.append("    board b, member m, fileinfo f ");
+			buff.append("WHERE ");
+			buff.append("    bno = fbno(+) ");
+			buff.append("    AND bmno = mno ");
+			buff.append("    AND b.isshow = 'Y' ");
+			buff.append("    AND bno = ? ");
 			break;
 		}
 		return buff.toString();

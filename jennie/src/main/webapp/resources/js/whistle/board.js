@@ -34,7 +34,6 @@ $(document).ready(function(){
 	$('#wbtn').click(function(){
 		$('#pageFrm').attr('action', '/whistle/board/boardWrite.blp');
 		$('#pageFrm').submit();
-		// 다시보기***********************************************************************
 	});
 	
 	$('#filebox').on('change', '.upfile', function(e){
@@ -96,6 +95,14 @@ $(document).ready(function(){
 		}
 		
 		$('.upfile').last().prop('disabled', true);
+		
+		$('#frm').submit();
+	});
+	
+	$('.brdList').click(function(){
+		var sno = $(this).attr('id');
+		
+		$(document.frm.bno).val(sno);
 		
 		$('#frm').submit();
 	});
